@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Player {
+  id    Int    @id @default(autoincrement())
+  name  String
+  score Int
+}
+
+model Rules {
+  id          Int    @id @default(autoincrement())
+  title       String
+  description String
+  points      Int
+  type        String // Tipo da regra: 'positivo' ou 'negativo'
+}
