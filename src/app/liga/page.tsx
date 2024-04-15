@@ -15,7 +15,6 @@ import {
 
 import { createClient } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
-
 const supabaseco = process.env.NEXT_PUBLIC_SUPABASE_CO
 const supabaseAnonKey = process.env.NEXT_PUBLIC_ANON_KEY
 
