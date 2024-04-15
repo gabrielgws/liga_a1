@@ -16,22 +16,17 @@ import {
 import { createClient } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
 
-// const supabaseco = process.env.SUPABASE_CO;
-// const supabaseAnonKey = process.env.ANON_KEY;
-// const supabaseco = import.meta.env.SUPABASE_CO;
-// const supabaseAnonKey = import.meta.env.ANON_KEY;
+const supabaseco = process.env.NEXT_PUBLIC_SUPABASE_CO
+const supabaseAnonKey = process.env.NEXT_PUBLIC_ANON_KEY
 
-// console.log('supabaseTest: ', supabaseco)
-
-// if (!supabaseco || !supabaseAnonKey) {
-//   throw new Error("Supabase URL ou chave de autenticação anônima não definidas.");
-// }
+if (!supabaseco || !supabaseAnonKey) {
+  throw new Error(
+    'Supabase URL ou chave de autenticação anônima não definidas.',
+  )
+}
 
 // const supabase = createClient(supabaseco, supabaseAnonKey);
-const supabase = createClient(
-  'https://sqfgdhnmwrwrgkcxwshz.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxZmdkaG5td3J3cmdrY3h3c2h6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTExMDk5NzYsImV4cCI6MjAyNjY4NTk3Nn0.ZdrtTltGKYBFJUYDWze82-SWA5_99pbcxhVVx536q1Q',
-)
+const supabase = createClient(`${supabaseco}`, `${supabaseAnonKey}`)
 
 interface PlayerDataProps {
   id: number
