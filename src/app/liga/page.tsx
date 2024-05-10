@@ -33,11 +33,6 @@ interface PlayerDataProps {
   score: number
 }
 
-interface DataAttProps {
-  // id: number
-  data: string
-}
-
 const Liga = () => {
   const [players, setPlayers] = useState<PlayerDataProps[]>([])
   const [updatedAt, setUpdatedAt] = useState<string>('')
