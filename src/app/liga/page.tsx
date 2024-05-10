@@ -35,9 +35,11 @@ interface PlayerDataProps {
 
 const Liga = () => {
   const [players, setPlayers] = useState<PlayerDataProps[]>([])
+  const [updatedAt, setUpdatedAt] = useState<string>('')
 
   useEffect(() => {
     getPlayers()
+    getDataAtt()
   }, [])
 
   async function getPlayers() {
@@ -55,6 +57,19 @@ const Liga = () => {
     }
   }
 
+  async function getDataAtt() {
+    const { data, error } = await supabase.from('data_atualizacao').select()
+
+    if (error) {
+      console.error('Erro ao buscar a data de atualização:', error.message)
+      return
+    }
+
+    if (data && data.length > 0) {
+      setUpdatedAt(data[0].data)
+    }
+  }
+
   return (
     <>
       <Header />
@@ -66,7 +81,7 @@ const Liga = () => {
 
         <div className="mb-8 mt-8">
           <Table>
-            <TableCaption>Pontuação atualizada em 20/03/2024</TableCaption>
+            <TableCaption>{`Pontuação atualizada em ${updatedAt}`}</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Participante</TableHead>
